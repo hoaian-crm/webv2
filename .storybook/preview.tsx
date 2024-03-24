@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import type { Preview } from "@storybook/react";
-import theme from '../src/theme';
 import React from "react";
+import { DynamicThemeProvider } from '../src/components';
 
 const preview: Preview = {
   parameters: {
@@ -12,13 +12,13 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    layout: 'fullscreen'
   },
   decorators: [(Story) => {
-    console.log("hello")
     return (
-      <ThemeProvider theme={theme}>
+      <DynamicThemeProvider>
         <Story />
-      </ThemeProvider>
+      </DynamicThemeProvider>
     )
   }]
 };
