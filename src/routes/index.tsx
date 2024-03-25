@@ -1,6 +1,7 @@
 import { AccessTimeOutlined, AccountCircleOutlined, ArchiveOutlined, AssignmentOutlined, ChatOutlined, CurrencyExchangeOutlined, DescriptionOutlined, DynamicFormOutlined, EmailOutlined, GradientOutlined, LocationOnOutlined, MessageOutlined, PeopleOutlineOutlined, PhoneOutlined, SettingsOutlined, SvgIconComponent, VerifiedUserOutlined } from "@mui/icons-material";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layout";
+import { CustomerPage } from "./customers";
 
 export type RouteItem = RouteObject & {
   Icon?: SvgIconComponent,
@@ -43,7 +44,7 @@ export const routes: Array<RouteItem> = [
     Icon: PeopleOutlineOutlined,
     group: "APPS",
     path: "/customers",
-    element: <h1>Customers</h1>
+    element: <CustomerPage />
   },
   {
     name: "Product",

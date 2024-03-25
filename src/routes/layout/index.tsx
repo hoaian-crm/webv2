@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export const Layout: React.FC<BoxProps> = (props) => {
 
   const theme = useTheme();
-  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const [openDrawer, setOpenDrawer] = useState(!mobile);
 
   return <Box
