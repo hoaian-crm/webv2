@@ -3,7 +3,8 @@ import { ComponentTheme } from '.';
 export const MuiButton: ComponentTheme["MuiButton"] = {
   styleOverrides: {
     root: {
-      textTransform: 'none'
+      textTransform: 'none',
+      outline: 'none'
     }
   },
 

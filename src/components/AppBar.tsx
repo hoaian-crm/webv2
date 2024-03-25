@@ -1,14 +1,19 @@
-import { Box, Button, IconButton, AppBar as MaterialAppBar, Toolbar, Typography } from "@mui/material";
+import { Box, BoxProps, Button, IconButton, AppBar as MaterialAppBar, Toolbar, Typography } from "@mui/material";
 import { MenuOutlined, Search } from '@mui/icons-material';
 import { ThemeButton } from "./ThemeButton";
 import { ProfileButton } from "./Profile";
 
-export const AppBar = () => {
+type Props = {
+  toggleOpenDrawer: () => void;
+  openDrawer: boolean;
+} & BoxProps;
+
+export const AppBar: React.FC<Props> = (props) => {
 
   return <Box>
     <MaterialAppBar position="static">
       <Toolbar>
-        <IconButton size="large" edge="start" aria-label="menu">
+        <IconButton size="large" edge="start" aria-label="menu" onClick={props.toggleOpenDrawer}>
           <MenuOutlined />
         </IconButton>
         <IconButton size="large" edge="start">

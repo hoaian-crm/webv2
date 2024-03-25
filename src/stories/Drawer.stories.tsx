@@ -3,12 +3,20 @@ import { GroupOutlined, Notifications, PhoneEnabledOutlined } from "@mui/icons-m
 import { Badge, Box } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 
 const meta: Meta<typeof Drawer> = {
   title: "Components/Drawer",
   component: Drawer,
+  decorators: [withRouter],
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    reactRouter: reactRouterParameters({
+      location: {},
+      routing: {
+        path: '/dashboard/ads'
+      }
+    }),
   }
 }
 
@@ -72,7 +80,7 @@ export const DrawerItemStory: Story = {
         name: "Notification",
         Icon: Notifications,
         badge: <Badge color="primary" badgeContent={10} />
-      }}>hello</DrawerItem>
+      }}></DrawerItem>
     </Box>
   }
 }
