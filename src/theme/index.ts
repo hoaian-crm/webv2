@@ -15,6 +15,9 @@ const theme = createTheme({
     },
     text: {
       primary: '#2A3547',
+    },
+    background: {
+      active: '#F6F9FC'
     }
   },
   components: {

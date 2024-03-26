@@ -6,7 +6,9 @@ export const MuiTypography: ComponentTheme["MuiTypography"] = {
       variant: 'h7'
     },
     style: {
-      fontSize: '1rem'
+      fontSize: '1rem',
+      fontFamily: 'Plus Jakarta Sans',
+      fontWeight: 600
     }
   }]
 }

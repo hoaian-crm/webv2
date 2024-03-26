@@ -9,7 +9,9 @@ import "@fontsource/plus-jakarta-sans/500.css";
 import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/plus-jakarta-sans/700.css";
 import "@fontsource/plus-jakarta-sans/800.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const queryClient = new QueryClient();
 
 
 const preview: Preview = {
@@ -25,9 +27,11 @@ const preview: Preview = {
   },
   decorators: [(Story) => {
     return (
-      <DynamicThemeProvider>
-        <Story />
-      </DynamicThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <DynamicThemeProvider>
+          <Story />
+        </DynamicThemeProvider>
+      </QueryClientProvider>
     )
   }]
 };

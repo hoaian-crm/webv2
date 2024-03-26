@@ -1,1 +1,2 @@
-export * from './useToogleTheme';
+export * from './useCustomer';
+export * from './useProfile';
