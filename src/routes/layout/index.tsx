@@ -11,6 +11,7 @@ export const Layout: React.FC<BoxProps> = (props) => {
   const [openDrawer, setOpenDrawer] = useState(!mobile);
 
   return <Box
+    width="100vw"
     {...props}
   >
     <Box

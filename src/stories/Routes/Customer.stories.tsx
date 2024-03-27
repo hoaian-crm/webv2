@@ -26,6 +26,7 @@ type Story = StoryObj<typeof meta>;
 
 export const CustomerPageStory: Story = {
   name: 'Page',
+  render: () => <CustomerPage />
 }
 
 export const ActionMenuStory: Story = {

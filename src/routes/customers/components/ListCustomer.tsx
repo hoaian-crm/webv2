@@ -1,10 +1,11 @@
 import { Avatar } from "@/components";
 import { ICustomer } from "@/types";
-import { Box, Button, List, ListItem, ListProps, TextField, Typography } from "@mui/material";
+import { SearchOutlined } from "@mui/icons-material";
+import { Box, Button, InputAdornment, List, ListItem, ListProps, TextField, Typography } from "@mui/material";
 
 type Props = {
   selected?: number | string,
-  onSelect?: (index: number | number) => void,
+  onSelectCustomer?: (index: number | number) => void,
   customers: Array<ICustomer>;
 } & ListProps;
 
@@ -14,7 +15,18 @@ export const ListCustomer: React.FC<Props> = ({ customers = [], ...props }) => {
   return <List {...props}>
 
     <ListItem>
-      <TextField placeholder="Search" sx={{ width: "100%" }} variant="outlined" size="small" />
+      <TextField placeholder="Search" sx={{ width: "100%" }} variant="outlined" size="small" InputProps={{
+        sx: {
+          borderColor: 'divider',
+          borderRadius: 2,
+          paddingX: 2
+        },
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchOutlined sx={{ color: "text.primary" }} />
+          </InputAdornment>
+        )
+      }} />
     </ListItem>
 
     {customers.map((customer) => (
@@ -23,7 +35,7 @@ export const ListCustomer: React.FC<Props> = ({ customers = [], ...props }) => {
           size="large"
           sx={{
             display: 'flex', gap: 2,
-            borderRadius: 2,
+            // borderRadius: 2,
             width: "100%",
             justifyContent: 'flex-start',
             color: 'inherit',
@@ -35,8 +47,8 @@ export const ListCustomer: React.FC<Props> = ({ customers = [], ...props }) => {
             paddingX: 2
           }}
           onClick={() => {
-            if (props.onSelect) {
-              props.onSelect(+customer.id);
+            if (props.onSelectCustomer) {
+              props.onSelectCustomer(+customer.id);
             }
           }}
         >

@@ -1,4 +1,4 @@
-import { Pagination } from "@/types";
+import { ICustomer, Pagination } from "@/types";
 import { instance } from "./axios";
 
 export namespace Customer {
@@ -11,4 +11,6 @@ export namespace Customer {
       params: query
     })
   }
+
+  export type Create = ICustomer;
 }
