@@ -1,4 +1,4 @@
-import { CustomerDetail, CustomerPage, ListCustomer } from "@/routes/customers";
+import { CustomerDetail, CustomerPage, ListCustomer, CreateCustomerForm } from "@/routes/customers";
 import { Meta, StoryObj } from "@storybook/react";
 import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
 import { ActionMenu } from "@/routes/customers";
@@ -54,5 +54,12 @@ export const CustomerDetailStory: Story = {
   render: () => {
     const customer = CustomerFaker.one();
     return <CustomerDetail customer={customer} sx={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'divider', width: 500 }} />
+  }
+}
+
+export const CreateCustomerFormStory: Story = {
+  name: "Create Customer",
+  render: () => {
+    return <CreateCustomerForm open={true} />
   }
 }

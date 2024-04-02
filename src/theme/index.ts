@@ -3,6 +3,7 @@ import { MuiAppBar } from "./AppBar";
 import { MuiIconButton } from './IconButton';
 import { MuiButton } from './Button';
 import { MuiTypography } from "./Typography";
+import { MuiDialogTitle } from './Dialog';
 import './theme.d'
 
 export type ComponentTheme = Components<Omit<Theme, "components">>;
@@ -24,7 +25,8 @@ const theme = createTheme({
     MuiAppBar,
     MuiIconButton,
     MuiButton,
-    MuiTypography
+    MuiTypography,
+    MuiDialogTitle
   },
   typography: {
     fontFamily: "Plus Jakarta Sans"

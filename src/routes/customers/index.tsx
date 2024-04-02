@@ -9,6 +9,7 @@ import { Banner } from '@/components';
 export * from './components/ActionMenu';
 export * from './components/ListCustomer';
 export * from './components/CustomerDetail';
+export * from './components/CreateForm.tsx';
 
 export const CustomerPage = () => {
 
