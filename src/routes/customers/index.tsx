@@ -27,18 +27,24 @@ export const CustomerPage = () => {
   return <Box sx={{
     maxWidth: 1400,
     marginX: 'auto',
-    marginTop: 5
+    marginTop: 2,
+    padding: 2,
   }}>
     <Banner title='Customer Application' subTitle='Home • Contact Application' />
     <Box sx={{
       display: 'flex',
       borderRadius: 2,
       boxShadow: 2,
-      marginTop: 5
+      marginTop: 5,
     }}>
       <ActionMenu sx={{ padding: 2, minWidth: 250 }} />
       <Divider orientation='vertical' flexItem />
-      <ListCustomer customers={customers.data?.result || []} onSelectCustomer={(e) => setSelected(e)} selected={selected} />
+      <ListCustomer
+        customers={customers.data?.result || []}
+        onSelectCustomer={(e) => setSelected(e)}
+        selected={selected}
+        sx={{ overflowY: "auto", width: "100%", maxHeight: "600px" }}
+      />
       <Divider orientation='vertical' flexItem />
       <CustomerDetail customer={customer} />
     </Box>

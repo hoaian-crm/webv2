@@ -11,7 +11,6 @@ type Props = {
 
 
 export const ListCustomer: React.FC<Props> = ({ customers = [], ...props }) => {
-
   return <List {...props}>
 
     <ListItem>
@@ -35,7 +34,6 @@ export const ListCustomer: React.FC<Props> = ({ customers = [], ...props }) => {
           size="large"
           sx={{
             display: 'flex', gap: 2,
-            // borderRadius: 2,
             width: "100%",
             justifyContent: 'flex-start',
             color: 'inherit',

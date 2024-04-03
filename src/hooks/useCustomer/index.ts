@@ -1,12 +1,12 @@
 import { CustomerFaker } from "@/faker/customer"
-import { Customer } from "@/services/core/customer"
 import { ICustomer } from "@/types"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { usePage } from "../usePage"
 
-export const useCustomer = (params: Customer.Query = {
-  limit: 10,
-  offset: 0
-}) => {
+export const useCustomer = () => {
+
+
+  const { limit } = usePage({ defaultLimit: 100 });
 
   const queryClient = useQueryClient();
   const customers = useQuery<{
@@ -15,9 +15,7 @@ export const useCustomer = (params: Customer.Query = {
   }>({
     queryKey: ['customers'],
     queryFn: async () => {
-      // const response = await Customer.fetch(query);
-      // return response.data.data;
-      return CustomerFaker.apiFake(params.limit);
+      return CustomerFaker.apiFake(limit);
     }
   })
 
