@@ -29,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "sort-by": "^1.2.0",
+    "validator": "^13.11.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "@storybook/test": "^8.0.4",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
+    "@types/validator": "^13.11.9",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "@vitejs/plugin-react": "^4.2.1",

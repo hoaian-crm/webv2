@@ -4,6 +4,9 @@ import { MuiIconButton } from './IconButton';
 import { MuiButton } from './Button';
 import { MuiTypography } from "./Typography";
 import { MuiDialogTitle } from './Dialog';
+import { MuiTextField } from './TextField';
+import { MuiFormHelperText } from './HelperText';
+import { MuiInputLabel } from './InputLabel';
 import './theme.d'
 
 export type ComponentTheme = Components<Omit<Theme, "components">>;
@@ -26,7 +29,10 @@ const theme = createTheme({
     MuiIconButton,
     MuiButton,
     MuiTypography,
-    MuiDialogTitle
+    MuiDialogTitle,
+    MuiTextField,
+    MuiInputLabel,
+    MuiFormHelperText,
   },
   typography: {
     fontFamily: "Plus Jakarta Sans"
