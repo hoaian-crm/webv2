@@ -5,3 +5,5 @@ export * from './Drawer';
 export * from './Avatar';
 export * from './Banner';
 export * from './TextField';
+export * from './PasswordField';
+export * from './PhoneNumberField';

@@ -1,8 +1,7 @@
-import { TextField } from "@/components";
+import { PasswordField, PhoneNumberField, TextField } from "@/components";
 import { Box, Input } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import Validator from "@/constants/validators";
-import { VisibilityOff } from "@mui/icons-material";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",
@@ -53,24 +52,14 @@ export const InputTypeStory: Story = {
         type="text"
       />
 
-      <TextField
+      <PasswordField
         placeholder="Enter your password"
         label="Password Input"
         type="password"
         value="Hello youtube"
-        InputProps={{
-          endAdornment: <VisibilityOff fontSize="small" />
-        }}
       />
 
-      <TextField
-        label="Phone Input"
-        type="tel"
-        placeholder="1-(444)-444-4445"
-        validators={[
-          Validator.isPhoneNumber(),
-        ]}
-      />
+      <PhoneNumberField label="Phone number" placeholder='Enter phone number' />
 
       <TextField
         label="Email Input"
