@@ -1,10 +1,16 @@
 import { Box, MenuItem, TextFieldProps } from "@mui/material";
 import { TextField } from './TextField';
+import Validator from "@/constants/validators";
 
-export const PhoneNumberField: React.FC<TextFieldProps> = (props) => {
+type PhoneNumberFieldProps = {
+  extensionField?: TextFieldProps,
+  inputField?: TextFieldProps
+}
+
+
+export const PhoneNumberField: React.FC<PhoneNumberFieldProps> = (props) => {
   return <Box>
     <TextField
-      size="small"
       select
       sx={{
         ".MuiOutlinedInput-notchedOutline": {
@@ -12,10 +18,14 @@ export const PhoneNumberField: React.FC<TextFieldProps> = (props) => {
           borderTopRightRadius: 0,
           borderBottomRightRadius: 0,
         },
-        backgroundColor: 'background.main'
+      }}
+      InputProps={{
+        sx: {
+          backgroundColor: 'background.main',
+        }
       }}
       defaultValue="+84"
-      label="Ext"
+      {...props.extensionField}
     >
       <MenuItem value="+84">
         VN (+84)
@@ -24,12 +34,16 @@ export const PhoneNumberField: React.FC<TextFieldProps> = (props) => {
     <TextField
       InputProps={{
         sx: {
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0,
-          borderLeftWidth: 0,
+          ".MuiOutlinedInput-notchedOutline": {
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0,
+          },
         }
       }}
-      {...props}
+      validators={[
+        Validator.isPhoneNumber()
+      ]}
+      {...props.inputField}
     />
   </Box>
 }

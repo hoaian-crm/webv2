@@ -52,22 +52,30 @@ export const InputTypeStory: Story = {
         type="text"
       />
 
-      <PasswordField
-        placeholder="Enter your password"
-        label="Password Input"
-        type="password"
-        value="Hello youtube"
-      />
-
-      <PhoneNumberField label="Phone number" placeholder='Enter phone number' />
-
       <TextField
-        label="Email Input"
+        label="Email"
         type="email"
         placeholder="example@gmail.com"
         validators={[
           Validator.isEmail(),
         ]}
+      />
+
+      <PasswordField
+        placeholder="Enter your password"
+        label="Password"
+        type="password"
+        value="Hello youtube"
+      />
+
+      <PhoneNumberField
+        extensionField={{
+          label: 'Extension'
+        }}
+        inputField={{
+          placeholder: 'Phone Number',
+          label: "Phone number"
+        }}
       />
 
     </Box>

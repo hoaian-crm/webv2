@@ -7,3 +7,6 @@ export * from './Banner';
 export * from './TextField';
 export * from './PasswordField';
 export * from './PhoneNumberField';
+export * from './EmailField';
+export * from './SubmitButton';
+export * from './Form';

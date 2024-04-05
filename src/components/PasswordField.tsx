@@ -1,6 +1,6 @@
-import { Box, TextFieldProps } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useState } from "react";
-import { TextField } from "./TextField";
+import { TextField, TextFieldProps } from "./TextField";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const PasswordField: React.FC<TextFieldProps> = (props) => {
@@ -8,6 +8,7 @@ export const PasswordField: React.FC<TextFieldProps> = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return <TextField
+    type={showPassword ? 'text' : 'password'}
     InputProps={{
       endAdornment: <Box onClick={() => setShowPassword(!showPassword)}
         sx={{ display: 'flex', margin: 0, padding: 0, cursor: 'pointer', alignItems: 'center' }}
