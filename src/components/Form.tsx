@@ -12,32 +12,56 @@ export const FormContext = createContext<{
   errors: any,
   onChange: (name: string, value: any) => any;
   onError: (name: string, value: any) => any;
-  isValid: boolean
+  isValid: boolean,
+  validators: Record<string, () => void>;
+  addValidator: (name: string, validator: () => void) => any,
+  onSubmit: () => any;
 }>({
   values: {},
   errors: {},
   onChange: () => { },
   onError: () => { },
-  isValid: false
+  isValid: false,
+  validators: {},
+  addValidator: () => { },
+  onSubmit: () => { },
 });
 
 export const Form: React.FC<FormProps> = (props) => {
 
-  const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  const [values, setValues] = useState({});
+  const [validators, setValidators] = useState<Record<string, () => void>>({});
+
+  console.log("errors is: ", errors);
 
   const onChange = (name: string, value: any) => {
-    setValues(_.set(values, name, value));
+    setValues(set(name, value, values));
+  }
+  const onError = (name: string, value: any) => {
+    setErrors(set(name, value, errors))
   }
 
-  const onError = (name: string, value: any) => {
-    const data = set(name, value, errors);
-    setErrors(data);
+  const addValidator = (name: string, validator: () => void) => {
+    setValidators(set(name, validator, validators));
+  }
+
+  const validate = () => {
+    Object.keys(validators).map(name => {
+      validators[name]();
+    })
   }
 
   const isValid = useMemo(() => {
     return _.values(errors).filter(value => !!value).length === 0;
   }, [errors])
+
+  const onSubmit = () => {
+    validate();
+    if (props.onSubmit && isValid) {
+      props.onSubmit(values);
+    }
+  }
 
 
   return <FormContext.Provider
@@ -46,15 +70,14 @@ export const Form: React.FC<FormProps> = (props) => {
       errors,
       onChange,
       onError,
-      isValid
+      isValid,
+      validators,
+      addValidator,
+      onSubmit
     }}>
     <Box component="form"
       {...props}
-      onSubmit={() => {
-        if (props.onSubmit && isValid) {
-          props.onSubmit(values);
-        }
-      }}
+      onSubmit={onSubmit}
     />
   </FormContext.Provider>
 }

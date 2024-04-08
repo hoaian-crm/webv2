@@ -25,8 +25,8 @@ namespace Validator {
 
   export const minLength = function(message: string = "", length: number) {
     if (!message) message = `Must be have more than ${length} characters`;
-    return (value: string) => {
-      return value.length < length ? message : ""
+    return (value: string | undefined) => {
+      return value && (value.length < length) ? message : ""
     }
   } satisfies ValidatorDecorator
 }

@@ -5,6 +5,7 @@ export const EmailField: React.FC<TextFieldProps> = (props) => {
   return <TextField
     type="email"
     validators={[
+      Validator.required(),
       Validator.isEmail()
     ]}
     {...props}

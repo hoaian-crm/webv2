@@ -1,6 +1,6 @@
 import { EmailField, Form, PasswordField, SubmitButton } from "@/components";
 import Validator from "@/constants/validators";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Form> = {
@@ -36,7 +36,7 @@ export const FromStory: Story = {
       <PasswordField label="Password" placeholder="strongtext" validators={
         [Validator.required(), Validator.minLength("", 8)]
       } name="password" />
-      <SubmitButton variant="contained" size="medium">
+      <SubmitButton>
         Submit
       </SubmitButton>
     </Form>
