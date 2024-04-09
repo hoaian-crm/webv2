@@ -10,6 +10,7 @@ import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/plus-jakarta-sans/700.css";
 import "@fontsource/plus-jakarta-sans/800.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { withConsole } from "@storybook/addon-console";
 
 const queryClient = new QueryClient();
 
@@ -25,15 +26,17 @@ const preview: Preview = {
     },
     layout: 'fullscreen'
   },
-  decorators: [(Story) => {
-    return (
-      <QueryClientProvider client={queryClient}>
-        <DynamicThemeProvider>
-          <Story />
-        </DynamicThemeProvider>
-      </QueryClientProvider>
-    )
-  }]
+  decorators: [
+    (storyFn, context) => withConsole()(storyFn)(context),
+    (Story) => {
+      return (
+        <QueryClientProvider client={queryClient}>
+          <DynamicThemeProvider>
+            <Story />
+          </DynamicThemeProvider>
+        </QueryClientProvider>
+      )
+    }]
 };
 
 export default preview;

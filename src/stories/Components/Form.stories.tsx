@@ -1,4 +1,4 @@
-import { EmailField, Form, PasswordField, SubmitButton } from "@/components";
+import { EmailField, Form, PasswordField, SelectField, SubmitButton, TextField } from "@/components";
 import Validator from "@/constants/validators";
 import { Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
@@ -22,7 +22,7 @@ export const FromStory: Story = {
         display: 'flex',
         flexDirection: 'column',
         width: 300,
-        gap: 3,
+        gap: 2,
         padding: 2,
         boxShadow: '1',
         borderRadius: 2
@@ -31,11 +31,31 @@ export const FromStory: Story = {
         console.log("values is: ", values);
       }}
     >
-      <Typography variant="h6">Example Form</Typography>
-      <EmailField label="Email" placeholder="example@gmail.com" name="email" />
+      <Typography variant="h6" sx={{ marginBottom: 2 }}>Example Form</Typography>
+
+      <EmailField
+        label="Email"
+        placeholder="example@gmail.com"
+        name="email"
+      />
+
       <PasswordField label="Password" placeholder="strongtext" validators={
         [Validator.required(), Validator.minLength("", 8)]
       } name="password" />
+
+      <SelectField
+        renderInput={(params) => <TextField
+          label="Animals"
+          {...params}
+        />}
+        name="animal"
+        options={[
+          { label: "Dog", value: 'dog' },
+          { label: "Cat", value: 'cat' },
+          { label: "Kitchen", value: 'kitchen' }
+        ]}
+      />
+
       <SubmitButton>
         Submit
       </SubmitButton>

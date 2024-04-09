@@ -13,8 +13,8 @@ export const FormContext = createContext<{
   onChange: (name: string, value: any) => any;
   onError: (name: string, value: any) => any;
   isValid: boolean,
-  validators: Record<string, () => void>;
-  addValidator: (name: string, validator: () => void) => any,
+  validators: Record<string, () => boolean>;
+  addValidator: (name: string, validator: () => boolean) => void,
   onSubmit: () => any;
 }>({
   values: {},
@@ -23,7 +23,7 @@ export const FormContext = createContext<{
   onError: () => { },
   isValid: false,
   validators: {},
-  addValidator: () => { },
+  addValidator: () => { return true },
   onSubmit: () => { },
 });
 
@@ -31,25 +31,26 @@ export const Form: React.FC<FormProps> = (props) => {
 
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({});
-  const [validators, setValidators] = useState<Record<string, () => void>>({});
-
-  console.log("errors is: ", errors);
+  const [validators, setValidators] = useState<Record<string, () => boolean>>({});
 
   const onChange = (name: string, value: any) => {
-    setValues(set(name, value, values));
+    setValues((values) => set(name, value, values));
   }
   const onError = (name: string, value: any) => {
-    setErrors(set(name, value, errors))
+    setErrors((errors) => set(name, value, errors))
   }
 
-  const addValidator = (name: string, validator: () => void) => {
-    setValidators(set(name, validator, validators));
+  const addValidator = (name: string, validator: () => boolean) => {
+    setValidators((validators) => set(name, validator, validators));
   }
 
   const validate = () => {
+    let valid = false;
     Object.keys(validators).map(name => {
-      validators[name]();
+      valid = valid || validators[name]();
     })
+
+    return valid;
   }
 
   const isValid = useMemo(() => {
@@ -57,8 +58,7 @@ export const Form: React.FC<FormProps> = (props) => {
   }, [errors])
 
   const onSubmit = () => {
-    validate();
-    if (props.onSubmit && isValid) {
+    if (props.onSubmit && validate()) {
       props.onSubmit(values);
     }
   }

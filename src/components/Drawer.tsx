@@ -17,7 +17,6 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("path: ", location.pathname);
 
   const renderRoutes = useMemo(() => {
     let result: Array<ReactElement> = [];

@@ -10,3 +10,5 @@ export * from './PhoneNumberField';
 export * from './EmailField';
 export * from './SubmitButton';
 export * from './Form';
+export * from './SelectField';
+export * from './TextAreaField'

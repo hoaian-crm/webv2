@@ -1,4 +1,4 @@
-import { PasswordField, PhoneNumberField, TextField } from "@/components";
+import { PasswordField, PhoneNumberField, SelectField, TextAreaField, TextField } from "@/components";
 import { Box, Input } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import Validator from "@/constants/validators";
@@ -78,6 +78,34 @@ export const InputTypeStory: Story = {
         }}
       />
 
+      <SelectField
+        name="animals"
+        renderInput={(params) => <TextField label="Animals" {...params} />}
+        options={[
+          {
+            label: "Cat",
+            value: "cat",
+          },
+          {
+            label: "Dog",
+            value: "dog",
+          },
+          {
+            label: "Chicken",
+            value: "chicken",
+          },
+          {
+            label: "Fish",
+            value: "fish",
+          },
+          {
+            label: "Shark",
+            value: "shark",
+          },
+        ]}
+      />
+
+      <TextAreaField label="Some text ..." rows={5} />
     </Box>
   }
 }

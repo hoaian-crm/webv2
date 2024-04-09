@@ -14,19 +14,20 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
   const ref = useRef<HTMLInputElement>();
 
   const onValidate = () => {
+    let errorText: string = "";
     if (props.validators) {
-      let errorText: string = "";
       props.validators.map(validator => {
         if (!errorText) errorText = validator(ref?.current?.value);
       })
-      console.log("error Text is: ", props.name, errorText);
       setError(errorText)
-      onError(props.name || "", errorText);
+      if (props.name) onError(props.name, errorText);
     }
+
+    return !errorText;
   }
 
   useEffect(() => {
-    if (props.validators) addValidator(props.name || "", onValidate)
+    if (props.validators && props.name) addValidator(props.name, onValidate)
   }, [props.validators])
 
   return (
@@ -37,11 +38,11 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
       onFocus={(e) => {
         if (props.onFocus) props.onFocus(e);
         setError("");
-        onError(props.name || "", "");
+        if (props.name) onError(props.name, "");
       }}
       onChange={(e) => {
         if (props.onChange) props.onChange(e);
-        if (onChange) onChange(props.name || "", e.target.value);
+        if (onChange && props.name) onChange(props.name, e.target.value);
       }}
       {...props}
     />

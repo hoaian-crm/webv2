@@ -11,13 +11,5 @@ export const MuiTextField: ComponentTheme["MuiTextField"] = {
   defaultProps: {
     variant: 'outlined',
     size: 'small',
-    InputLabelProps: {
-      shrink: true,
-      sx: {
-        fontSize: 16,
-        fontWeight: 600,
-        color: 'text.primary'
-      }
-    }
   }
 }
