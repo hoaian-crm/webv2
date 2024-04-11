@@ -15,7 +15,6 @@ export const SelectField: React.FC<Props> = (props) => {
       if (props.onChange) {
         props.onChange(...params);
       }
-      // console.log(params)
       onChange(props.name || "", params[1]?.value);
     }}
     {...props} />

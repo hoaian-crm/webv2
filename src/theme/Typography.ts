@@ -8,7 +8,18 @@ export const MuiTypography: ComponentTheme["MuiTypography"] = {
     style: {
       fontSize: '1rem',
       fontFamily: 'Plus Jakarta Sans',
-      fontWeight: 600
+      fontWeight: 600,
     }
-  }]
+  }, {
+    props: {
+      variant: 'formLabel'
+    },
+    style: {
+      fontSize: '0.875rem',
+      fontFamily: 'Plus Jakarta Sans',
+      fontWeight: 600,
+      marinTop: '10px'
+    }
+  }
+  ]
 }

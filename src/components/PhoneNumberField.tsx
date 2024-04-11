@@ -9,10 +9,11 @@ type PhoneNumberFieldProps = {
 
 
 export const PhoneNumberField: React.FC<PhoneNumberFieldProps> = (props) => {
-  return <Box>
+  return <Box sx={{ width: '100%', display: 'flex' }}>
     <TextField
       select
       sx={{
+        minWidth: '130px',
         ".MuiOutlinedInput-notchedOutline": {
           borderRightWidth: 0,
           borderTopRightRadius: 0,
@@ -32,6 +33,7 @@ export const PhoneNumberField: React.FC<PhoneNumberFieldProps> = (props) => {
       </MenuItem>
     </TextField>
     <TextField
+      fullWidth
       InputProps={{
         sx: {
           ".MuiOutlinedInput-notchedOutline": {

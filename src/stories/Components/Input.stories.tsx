@@ -1,7 +1,8 @@
-import { PasswordField, PhoneNumberField, SelectField, TextAreaField, TextField } from "@/components";
-import { Box, Input } from "@mui/material";
+import { MapField, PasswordField, PhoneNumberField, SelectField, TextAreaField, TextField } from "@/components";
+import { Box, Input, Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import Validator from "@/constants/validators";
+import { RadioField } from "@/components/RadioField";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",
@@ -108,4 +109,35 @@ export const InputTypeStory: Story = {
       <TextAreaField label="Some text ..." rows={5} />
     </Box>
   }
+}
+
+export const RadioStory: Story = {
+  name: "Radio",
+  render: () => <RadioField
+    row
+    options={[
+      {
+        label: "Female",
+        value: "female"
+      },
+      {
+        label: "Male",
+        value: "male"
+      },
+      {
+        label: "Order",
+        value: "order"
+      },
+    ]
+    } />
+}
+
+export const MapInputStory: Story = {
+  name: "Map",
+  render: () =>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+      <Typography variant="h7">Location</Typography>
+      <MapField placeholder="Location ..." />
+    </Box>
+
 }

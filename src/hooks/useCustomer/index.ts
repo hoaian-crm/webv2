@@ -5,7 +5,6 @@ import { usePage } from "../usePage"
 
 export const useCustomer = () => {
 
-
   const { limit } = usePage({ defaultLimit: 100 });
 
   const queryClient = useQueryClient();

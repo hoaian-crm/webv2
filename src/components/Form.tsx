@@ -47,7 +47,8 @@ export const Form: React.FC<FormProps> = (props) => {
   const validate = () => {
     let valid = false;
     Object.keys(validators).map(name => {
-      valid = valid || validators[name]();
+      const result = validators[name]();
+      if (result) valid = true;
     })
 
     return valid;
