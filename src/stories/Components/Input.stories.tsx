@@ -3,6 +3,7 @@ import { Box, Input, Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import Validator from "@/constants/validators";
 import { RadioField } from "@/components/RadioField";
+import { AvatarField } from "@/components/AvatarField";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",
@@ -140,4 +141,13 @@ export const MapInputStory: Story = {
       <MapField placeholder="Location ..." />
     </Box>
 
+}
+
+export const AvatarStory: Story = {
+  name: "Avatar",
+  render: () => {
+    return <Box>
+      <AvatarField />
+    </Box>
+  }
 }
