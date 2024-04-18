@@ -1,4 +1,4 @@
-import { Button, ButtonProps, InputProps } from '@mui/material';
+import { Avatar, Button, ButtonProps } from '@mui/material';
 
 type Props = {
   containerProps: ButtonProps;
@@ -8,9 +8,17 @@ type Props = {
 
 export const AvatarField: React.FC<Props> = (props) => {
 
-  return <Button component="label" sx={{ backgroundColor: 'red', width: 40, height: 40, borderRadius: 10 }} {...props.containerProps}>
-
-
+  return <Button
+    component="label"
+    sx={{
+      padding: 1,
+      margin: 0,
+      minWidth: 'unset',
+      borderRadius: 100
+    }}
+    {...props.containerProps}
+  >
+    <Avatar />
     <input type="file" hidden {...props.inputProps} />
   </Button>
 }
