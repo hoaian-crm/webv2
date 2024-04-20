@@ -9,7 +9,8 @@ type PhoneNumberFieldProps = {
 
 
 export const PhoneNumberField: React.FC<PhoneNumberFieldProps> = (props) => {
-  return <Box sx={{ width: '100%', display: 'flex' }}>
+
+  return <Box sx={{ display: 'flex', ...props.sx }}>
     <TextField
       select
       sx={{

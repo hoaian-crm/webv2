@@ -2,15 +2,15 @@ import { CustomerDetail, CustomerPage, ListCustomer, CreateCustomerForm } from "
 import { Meta, StoryObj } from "@storybook/react";
 import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
 import { ActionMenu } from "@/routes/customers";
-import { useCustomer } from "@/hooks";
 import { useEffect, useState } from "react";
 import { CustomerFaker } from "@/faker/customer";
+import { useCustomers } from "@/hooks";
 
 const meta: Meta<typeof CustomerPage> = {
   title: "Routes/Customers",
   decorators: [withRouter],
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
     reactRouter: reactRouterParameters({
       location: {},
       routing: {
@@ -37,14 +37,18 @@ export const ActionMenuStory: Story = {
 export const ListCustomerStory: Story = {
   name: "List Customer",
   render: () => {
-    const { customers } = useCustomer();
+    const { data, isPending } = useCustomers({
+      limit: 100,
+      offset: 0,
+      keyword: "",
+    });
     const [selected, setSelected] = useState<string | number | undefined>(undefined);
 
     useEffect(() => {
-      if (!customers.isPending && (customers.data?.result.length || 0) > 0) {
-        setSelected(customers.data?.result[0].id);
+      if (!isPending && (data?.result.length || 0) > 0) {
+        setSelected(data?.result[0].id);
       }
-    }, [customers.isPending])
+    }, [isPending])
     return <ListCustomer selected={selected} onSelect={(id) => setSelected(id.toString())} sx={{ width: 500 }} customers={customers.data?.result || []} />
   }
 }

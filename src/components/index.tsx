@@ -14,4 +14,8 @@ export * from './SelectField';
 export * from './TextAreaField'
 export * from './RadioField';
 export * from './MapField';
+export * from './AvatarField'
+export * from './Editable'
 export * from './MapButton';
+export * from './LocationButton';
+export * from './ErrorBoundary';

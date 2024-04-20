@@ -15,6 +15,8 @@ export type ICustomer = {
   updatedAt?: Date;
   deletedAt?: Date;
   address?: IAddress;
+  placeId?: string;
   tag?: Array<ResourceTag>;
   note?: string;
+  avatar?: string;
 }

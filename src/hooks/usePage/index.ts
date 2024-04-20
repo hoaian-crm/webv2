@@ -6,7 +6,7 @@ type Props = {
   defaultPage?: number;
 }
 
-export const usePage = (props?: Props = {}) => {
+export const usePage = (props: Props = {}) => {
 
   const [pagination] = useSearchParams({
     limit: props.defaultLimit?.toString() || "10",
@@ -36,7 +36,8 @@ export const usePage = (props?: Props = {}) => {
   }
 
   return {
-    limit, page,
+    limit,
+    page,
     next,
     pre
   }

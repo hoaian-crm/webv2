@@ -26,7 +26,7 @@ export const MapField: React.FC<TextFieldProps> = (props) => {
     options={query.data?.result || []}
     getOptionLabel={(option) => option.structured_formatting.main_text}
     onChange={(_, value) => {
-      if (props.name) onChange(props.name, value);
+      if (props.name) onChange(props.name, value?.place_id);
     }}
     renderOption={(props, option) => {
       return <Box
@@ -37,7 +37,7 @@ export const MapField: React.FC<TextFieldProps> = (props) => {
           flexDirection: 'row',
           alignItems: 'center',
           paddingX: 1,
-          width: "100%"
+          width: "100%",
         }}>
         <Box>
           <Typography color="text.primary" variant="body2">

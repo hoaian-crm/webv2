@@ -1,47 +1,70 @@
-import { useCustomer } from "@/hooks";
 import { DeleteOutlineOutlined, PermContactCalendarOutlined, StarOutline } from "@mui/icons-material"
-import { Button, List, ListItem, ListProps, Typography } from "@mui/material"
+import { Button, List, ListItem, ListItemProps, ListProps, Typography } from "@mui/material"
+import { useState } from "react";
+import { CreateCustomerForm } from "./CreateForm";
 
 type Props = {
-
+  tabIndex?: number;
+  onTabChange?: (index: number) => void;
 } & ListProps;
 
-export const ActionMenu: React.FC<Props> = (props) => {
+export const ActionMenu: React.FC<Props> = ({ tabIndex = 0, ...props }) => {
 
-  const { create } = useCustomer();
+  const [customerForm, setCustomerForm] = useState(false);
 
   return <List {...props}>
     <ListItem>
       <Button
         variant="contained"
-        size="large"
         sx={{ boxShadow: 1, marginBottom: 2, borderRadius: 2, width: "100%" }}
         disableElevation={true}
-        onClick={() => create.mutate({ id: 10 })}
+        onClick={() => setCustomerForm(true)}
       >
-        Add New Contact
+        Create Contact
       </Button>
     </ListItem>
 
-    <ListItem>
-      <Button variant="link" color="inherit" sx={{ justifyContent: 'left', gap: 2, width: "100%" }}>
-        <PermContactCalendarOutlined fontSize="small" />
-        <Typography variant="subtitle2">All Contacts</Typography>
-      </Button>
-    </ListItem>
+    <TabItem
+      Icon={PermContactCalendarOutlined}
+      name="Contacts"
+      active={tabIndex === 0}
+      onClick={() => {
+        if (props.onTabChange) props.onTabChange(0)
+      }}
+    />
 
-    <ListItem>
-      <Button variant="link" color="inherit" sx={{ justifyContent: 'left', gap: 2, width: "100%" }}>
-        <StarOutline fontSize="small" />
-        <Typography variant="subtitle2">Starred</Typography>
-      </Button>
-    </ListItem>
+    <TabItem
+      Icon={StarOutline}
+      name="Starred"
+      active={tabIndex === 1}
+      onClick={() => {
+        if (props.onTabChange) props.onTabChange(1)
+      }}
+    />
 
-    <ListItem>
-      <Button variant="link" color="inherit" sx={{ justifyContent: 'left', gap: 2, width: "100%" }}>
-        <DeleteOutlineOutlined fontSize="small" />
-        <Typography variant="subtitle2">Deleted</Typography>
-      </Button>
-    </ListItem>
+    <TabItem
+      Icon={DeleteOutlineOutlined}
+      name="Deleted"
+      active={tabIndex === 2}
+      onClick={() => {
+        if (props.onTabChange) props.onTabChange(2)
+      }}
+    />
+
+    <CreateCustomerForm open={customerForm} onClose={() => setCustomerForm(false)} />
   </List>
+}
+
+const TabItem: React.FC<ListItemProps & {
+  name: string;
+  Icon: React.FC<any>,
+  active?: boolean
+}> = ({ name, Icon, active = false, ...props }) => {
+
+  return <ListItem {...props}>
+    <Button variant="link" color={active ? 'primary' : 'inherit'} sx={{ justifyContent: 'left', gap: 1, width: "100%" }}>
+      <Icon fontSize="small" />
+      <Typography variant="subtitle2">{name}</Typography>
+    </Button>
+  </ListItem>
 }

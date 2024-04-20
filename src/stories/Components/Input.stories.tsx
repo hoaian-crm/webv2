@@ -151,7 +151,7 @@ export const AvatarStory: Story = {
   name: "Avatar",
   render: () => {
     return <Box>
-      <AvatarField />
+      <AvatarField alt={""} name={""} />
     </Box>
   }
 }

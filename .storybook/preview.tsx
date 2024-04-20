@@ -1,7 +1,6 @@
-import { ThemeProvider } from "@emotion/react";
 import type { Preview } from "@storybook/react";
 import React from "react";
-import { DynamicThemeProvider, MapButton } from '../src/components';
+import { DynamicThemeProvider, ErrorBoundary, MapButton } from '../src/components';
 import "@fontsource/plus-jakarta-sans/200.css";
 import "@fontsource/plus-jakarta-sans/300.css";
 import "@fontsource/plus-jakarta-sans/400.css";
@@ -11,6 +10,8 @@ import "@fontsource/plus-jakarta-sans/700.css";
 import "@fontsource/plus-jakarta-sans/800.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { withConsole } from "@storybook/addon-console";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const preview: Preview = {
             <Story />
             <MapButton />
           </DynamicThemeProvider>
+          <ToastContainer />
         </QueryClientProvider>
       )
     }]

@@ -30,6 +30,10 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     if (props.validators && props.name) addValidator(props.name, onValidate)
   }, [props.validators])
 
+  useEffect(() => {
+    if (props.defaultValue && props.name) onChange(props.name, props.defaultValue);
+  }, [props.defaultValue])
+
   return (
     <MuiTextField
       inputRef={ref}

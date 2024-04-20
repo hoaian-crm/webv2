@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@mui/material"
-import { createContext, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import _ from 'lodash';
 import { set } from 'lodash/fp';
 
@@ -26,6 +26,8 @@ export const FormContext = createContext<{
   addValidator: () => { return true },
   onSubmit: () => { },
 });
+
+export const useForm = () => useContext(FormContext);
 
 export const Form: React.FC<FormProps> = (props) => {
 
