@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
 import type { Preview } from "@storybook/react";
 import React from "react";
-import { DynamicThemeProvider } from '../src/components';
+import { DynamicThemeProvider, MapButton } from '../src/components';
 import "@fontsource/plus-jakarta-sans/200.css";
 import "@fontsource/plus-jakarta-sans/300.css";
 import "@fontsource/plus-jakarta-sans/400.css";
@@ -33,6 +33,7 @@ const preview: Preview = {
         <QueryClientProvider client={queryClient}>
           <DynamicThemeProvider>
             <Story />
+            <MapButton />
           </DynamicThemeProvider>
         </QueryClientProvider>
       )

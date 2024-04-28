@@ -46,7 +46,11 @@ export const InputStory: Story = {
 export const InputTypeStory: Story = {
   name: "Types",
   render: () => {
-    return <Box sx={{ display: "flex", flexDirection: 'column', gap: 2 }}>
+    return <Box sx={{
+      display: "flex",
+      flexDirection: 'column',
+      gap: 2
+    }}>
 
       <TextField
         placeholder="Enter some text"
@@ -138,7 +142,7 @@ export const MapInputStory: Story = {
   render: () =>
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
       <Typography variant="h7">Location</Typography>
-      <MapField placeholder="Location ..." />
+      <MapField sx={{ width: 300 }} />
     </Box>
 
 }

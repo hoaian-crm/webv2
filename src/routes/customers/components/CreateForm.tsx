@@ -1,4 +1,4 @@
-import { EmailField, Form, PhoneNumberField, RadioField, SubmitButton, TextField } from "@/components";
+import { EmailField, Form, MapField, PhoneNumberField, RadioField, SubmitButton, TextField } from "@/components";
 import Validator from "@/constants/validators";
 import { Box, Button, Dialog, DialogTitle, ModalProps, Typography } from "@mui/material"
 
@@ -49,6 +49,10 @@ export const CreateCustomerForm: React.FC<Props> = (props) => {
 
       <Typography variant="formLabel">Date of birth: </Typography>
       <TextField name="dob" type="date" />
+
+      <Typography variant="formLabel">Address: </Typography>
+      <MapField name="address" validators={[Validator.required()]} />
+
       <Box sx={{ display: 'flex', gap: 2, marginTop: 2, maxWidth: 150, marginLeft: 'auto', marginRight: 0 }}>
         <Button variant="contained" sx={{ flex: 1 }} color="error" size="medium">Close</Button>
         <SubmitButton sx={{ flex: 1 }}>Create</SubmitButton>

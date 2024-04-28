@@ -1,4 +1,4 @@
-import { EmailField, Form, PasswordField, SelectField, SubmitButton, TextField } from "@/components";
+import { EmailField, Form, MapField, PasswordField, SelectField, SubmitButton, TextField } from "@/components";
 import Validator from "@/constants/validators";
 import { Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
@@ -55,6 +55,8 @@ export const FromStory: Story = {
           { label: "Kitchen", value: 'kitchen' }
         ]}
       />
+
+      <MapField name="address" validators={[Validator.required()]} />
 
       <SubmitButton>
         Submit

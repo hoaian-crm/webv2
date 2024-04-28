@@ -11,4 +11,8 @@ export namespace Address {
       params: query
     })
   }
+
+  export const detail = (placeId: string) => {
+    return instance.get(`/address?placeId=${placeId}`);
+  }
 }

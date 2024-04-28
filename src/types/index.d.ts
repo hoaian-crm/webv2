@@ -3,3 +3,4 @@ export * from './customer';
 export * from './tag';
 export * from './user';
 export * from './pagination';
+export * from './marker';
