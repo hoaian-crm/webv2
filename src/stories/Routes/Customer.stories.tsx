@@ -1,4 +1,4 @@
-import { CustomerDetail, CustomerPage, ListCustomer, CreateCustomerForm } from "@/routes/customers";
+import { CustomerDetail, CustomerPage, ListCustomer, CreateCustomerForm, ConfirmDeleteCustomer } from "@/routes/customers";
 import { Meta, StoryObj } from "@storybook/react";
 import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
 import { ActionMenu } from "@/routes/customers";
@@ -49,7 +49,7 @@ export const ListCustomerStory: Story = {
         setSelected(data?.result[0].id);
       }
     }, [isPending])
-    return <ListCustomer selected={selected} onSelect={(id) => setSelected(id.toString())} sx={{ width: 500 }} customers={customers.data?.result || []} />
+    return <ListCustomer selected={selected} onSelect={(id) => setSelected(id.toString())} sx={{ width: 500 }} customers={data?.result || []} />
   }
 }
 
@@ -65,5 +65,12 @@ export const CreateCustomerFormStory: Story = {
   name: "Create Customer",
   render: () => {
     return <CreateCustomerForm open={true} />
+  }
+}
+
+export const ConfirmDeleteStory: Story = {
+  name: "Confirm Delete",
+  render: () => {
+    return <ConfirmDeleteCustomer open={true} data={CustomerFaker.one()} />
   }
 }

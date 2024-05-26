@@ -16,7 +16,16 @@ export const useCustomerAction = () => {
     }
   })
 
+  const remove = useMutation({
+    mutationFn: async (data: Customer.DeleteBody) => {
+      await Customer.remove(data);
+      queryClient.invalidateQueries({ queryKey: ['customers'] });
+      return null;
+    }
+  })
+
   return {
-    create
+    create,
+    remove
   }
 }

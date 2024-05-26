@@ -7,27 +7,27 @@ export const MuiButton: ComponentTheme["MuiButton"] = {
       outline: 'none'
     }
   },
-
-  variants: [{
-    props: {
-      variant: 'link'
+  variants: [
+    {
+      props: {
+        variant: 'link'
+      },
+      style: ({ theme }) => ({
+        color: theme.palette.text.primary,
+        ":hover": {
+          color: theme.palette.primary.main,
+          backgroundColor: "#F1F3FF"
+        }
+      })
     },
-    style: ({ theme }) => ({
-      color: theme.palette.text.primary,
-      ":hover": {
-        color: theme.palette.primary.main,
-        backgroundColor: "#F1F3FF"
-      }
-    })
-  },
-  {
-    props: {
-      variant: 'link',
-      color: 'primary',
+    {
+      props: {
+        variant: 'link',
+        color: 'primary',
+      },
+      style: ({ theme }) => ({
+        color: theme.palette.primary.main
+      })
     },
-    style: ({ theme }) => ({
-      color: theme.palette.primary.main
-    })
-  }
   ],
 }

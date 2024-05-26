@@ -1,9 +1,10 @@
 import { Avatar, Editable, EmailField, Form, LocationButton, MapField, PhoneNumberField, SubmitButton } from "@/components";
 import { ICustomer } from "@/types";
-import { DeleteOutline, EditOutlined, SaveRounded, StarBorder } from "@mui/icons-material";
+import { DeleteOutline, EditOutlined, StarBorder } from "@mui/icons-material";
 import { Box, BoxProps, Button, Divider, IconButton, TextField, Typography } from "@mui/material";
 import moment from 'moment';
 import { useState } from "react";
+import { ConfirmDeleteCustomer } from "./ConfirmDelete";
 
 
 type Props = {
@@ -13,11 +14,9 @@ export const CustomerDetail: React.FC<Props> = (props) => {
 
   const [editing, setEditing] = useState(false);
 
+  const [deleting, setDeleting] = useState(false);
   if (!props.customer) return null;
 
-  const onSave = () => {
-    setEditing(false);
-  }
 
   return <Form
     key={props.customer.id}
@@ -33,7 +32,7 @@ export const CustomerDetail: React.FC<Props> = (props) => {
       <IconButton onClick={() => setEditing(!editing)}>
         <EditOutlined fontSize="small" />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={() => setDeleting(true)}>
         <DeleteOutline fontSize="small" />
       </IconButton>
     </Box>
@@ -104,9 +103,12 @@ export const CustomerDetail: React.FC<Props> = (props) => {
     </Box>
     {editing &&
       <Box sx={{ padding: 2, display: 'flex', gap: 2, maxWidth: 300 }}>
-        <Button color="error" variant="contained" sx={{ flex: 1 }} onClick={() => setEditing(false)}>Cancel</Button>
+        <Button color="primary" variant="contained" sx={{ flex: 1 }} onClick={() => setEditing(false)}>Cancel</Button>
         <SubmitButton sx={{ flex: 1 }}>Save</SubmitButton >
       </Box>
     }
+
+
+    <ConfirmDeleteCustomer open={deleting} data={props.customer} onClose={() => setDeleting(false)} />
   </Form>
 }

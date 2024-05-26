@@ -20,4 +20,18 @@ export namespace Customer {
   export const create = (body: CreateBody) => {
     return instance.post<CreateResponse>('/customers', body);
   }
+
+  // export type UpdateBody = Partial<ICustomer> & { id: string };
+  // export type UpdateResponse = BaseResponse<ICustomer>;
+  // export const update = (body: UpdateBody) => {
+  //   return instance.put<UpdateResponse>('/customer');
+  // }
+
+  export type DeleteBody = { ids: Array<number | string> };
+  export type DeleteResponse = BaseResponse<null>;
+  export const remove = (body: DeleteBody) => {
+    return instance.delete("/customers", {
+      data: body
+    })
+  }
 }

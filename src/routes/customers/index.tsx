@@ -4,12 +4,13 @@ import { ListCustomer } from './components/ListCustomer';
 import { CustomerDetail } from './components/CustomerDetail';
 import { useCustomers } from '@/hooks';
 import { useEffect, useMemo, useState } from 'react';
-import { Banner, MapField } from '@/components';
+import { Banner } from '@/components';
 
 export * from './components/ActionMenu';
 export * from './components/ListCustomer';
 export * from './components/CustomerDetail';
 export * from './components/CreateForm.tsx';
+export * from './components/ConfirmDelete.tsx';
 
 export const CustomerPage = () => {
 
@@ -58,5 +59,4 @@ export const CustomerPage = () => {
       <CustomerDetail customer={customer} sx={{ width: '100%' }} />
     </Box>
   </Box>
-  return <MapField />
 }

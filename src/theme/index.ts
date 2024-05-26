@@ -19,10 +19,12 @@ const theme = createTheme({
     },
     text: {
       primary: '#2A3547',
+      warning: '#FFAE1F',
     },
     background: {
       main: "#EAEFF4",
-      active: '#EBF3FE'
+      active: '#EBF3FE',
+      warning: '#FEF5E5'
     }
   },
   components: {
